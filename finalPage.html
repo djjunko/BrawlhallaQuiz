@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { 
+            font-family: arial; 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #main {
+            margin-top: 20px;
+        }
+
+        .questions {
+            margin: auto;
+            width: 70%;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+  <img src="Featured-Brawlhalla-Best-Characters-Beginners.avif" alt="theending">
+    <script>
+        // Retrieve the stored counts from local storage
+        const counts = JSON.parse(localStorage.getItem('counts')) || {};
+    
+        // Find the option with the highest count
+        const maxOption = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+    
+        // Display an alert based on the stored option
+        if (maxOption === 'gaunt') {
+            alert('Congrats! By the answers of the questions you are a Gauntlet main, a good person');
+        } else if (maxOption === 'kat') {
+            alert('Congrats! By the answers of the questions you are a Katar main, pretty boosted and passive and scared');
+        } else if (maxOption === 'scyth') {
+            alert('Congrats! by the answers of the questions you are a Scythe main, its all reads so you think everything very logically');
+        } else if (maxOption === 'lan') {
+            alert('Congrats, I guess? by your answers .. sadly you are a lance main. just ignorant honestly, we dont really like you.!');
+        } else {
+            alert('Invalid option.');
+        }
+    </script>
+</section>
+</body>
+</html>

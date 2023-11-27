@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brawlhalla quiz! answer these questions to sae what Brawlhalla weapon is best for you!">
+  <meta property="og:title" content="Brawkhalla Quiz">
+  <meta name="author" content="Djjunko">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta class="dynamic" name="keywords" content="Survey, Quiz, Brawlhalla,Weapons, Main, Gauntlets, Katars, Lance, Scythe">
+    <title>Brawlhalla Quiz! What weapon you maining?</title>
+    <style>
+    
+        * { 
+            font-family: arial; 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            text-align: center;
+            margin-top: 50px; 
+           /* display: flex;*/
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Ensure full height of the viewport */
+        }
+
+        #main {
+            margin-top: 20px;
+        }
+
+        .questions {
+            margin: auto;
+            width: 70%;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-right: 5px;
+        }
+
+        button {
+            border: none;
+            color: white;
+            background-color: #f44336;
+            padding: 15px 32px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #D32F2F;
+        }
+    </style>
+</head>
+<body>
+    <section id="header"> 
+        <img src="play-overlay-bg-43c43a50.png" alt="picture1" style="
+        width: 600px;
+    ">
+    </section>
+    <section id="main"> 
+        <div class="questions">
+            <h1>You're walking alone at night when you suddenly stumble upon an old, abandoned mansion with flickering lights. What do you think is going on inside, and how would you react?</h1>
+             <br>
+            <label><input id="gaunt" type="radio" name="response" value="Curious" class="inline" /> I'd probably feel curious but cautious. I might approach slowly to see if there's a reasonable explanation for the lights, like someone working inside</label>
+            
+            <label><input id="kat" type="radio" name="response" value="Run" class="inline" /> Oh no, no, no! Abandoned mansion with flickering lights? I'd turn around and run as fast as I can, no questions asked. Safety first!</label>
+            
+            <label><input id="scyth" type="radio" name="response" value="Report" class="inline" /> Seeing flickering lights in an abandoned mansion could indicate electrical issues or a potential fire hazard. I'd call the local authorities to report it and make sure they investigate to prevent any danger</label>
+            
+            <label><input id="lan" type="radio" name="response" value="MoveIn" class="inline" /> An old mansion with flickering lights? Sounds like a perfect place for you to finally move into. Maybe the ghosts will appreciate your company!</label>
+        </div>
+        <br>
+        <button><a style="text-decoration: none; color: white" href="question2.html" onclick="redirectBasedOnVotes()">Submit</a>
+    </section>
+
+     
+   <!-- <center><section style="position: fixed; width: 100%; background-color: black; color: white; bottom: 0; " id="footer"> 
+        <p style="
+        padding-top: 20px;
+        padding-bottom: 20px;
+    ">Copyright 2023 github/djjunko</p>
+    </section></center> -->
+      </body>
+      </html>
+
+    <script>
+        function redirectBasedOnVotes() {
+            const options = ['gaunt', 'kat', 'scyth', 'lan'];
+            let counts = JSON.parse(localStorage.getItem('counts')) || {};
+    
+            options.forEach(option => {
+                const checkbox = document.getElementById(option);
+                if (checkbox.checked) {
+                    counts[option] = (counts[option] || 0) + 1;
+                }
+            });
+    
+            localStorage.setItem('counts', JSON.stringify(counts));
+    
+            const currentPageNumber = parseInt(window.location.pathname.match(/\d+/)[0]);
+            const nextPageNumber = currentPageNumber + 1;
+    
+            if (nextPageNumber <= 10) {
+                window.location.href = `question${nextPageNumber}.html`;
+            } else {
+                window.location.href = 'finalPage.html';
+            }
+        }
+    </script>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brawlhalla quiz! answer these questions to sae what Brawlhalla weapon is best for you!">
+  <meta property="og:title" content="Brawkhalla Quiz">
+  <meta name="author" content="Djjunko">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta class="dynamic" name="keywords" content="Survey, Quiz, Brawlhalla,Weapons, Main, Gauntlets, Katars, Lance, Scythe">
+    <title>Brawlhalla Quiz! What weapon you maining?</title>
+    <style>
+         * { 
+            font-family: arial; 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            text-align: center;
+          /*  display: flex; */ 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Ensure full height of the viewport */
+        }
+
+        #main {
+            margin-top: 20px;
+        }
+
+        .questions {
+            margin: auto;
+            width: 70%;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-right: 5px;
+        }
+
+        button {
+            border: none;
+            color: white;
+            background-color: #f44336;
+            padding: 15px 32px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #D32F2F;
+        }
+    </style>
+</head>
+<body>
+    <section id="header"> 
+        <img src="pavelski-scythe-combo.gif" alt="combo" style="
+        height: 250px;
+        margin-top: 30px;
+    ">
+    </section>
+    <section id="main"> 
+        <div class="questions">
+            <h1> You find yourself trapped in a colossal maze filled with mischievous sentient balloons. The only way out is to navigate through the labyrinth, but the balloons have different personalities, from cheerful and helpful to downright tricky. How do you strategically navigate this balloon-filled maze and reach the exit unscathed?</h1>
+             <br>
+            <label><input id="gaunt" type="radio" name="response" value="Curious" class="inline" /> I'd befriend the cheerful balloons, creating a team of inflatable allies. Together, we'd float above the maze, scouting the best route. The tricky balloons wouldn't see us coming, and with a burst of enthusiasm, we'd reach the exit in a parade of triumphant colors</label>
+            
+            <label><input id="kat" type="radio" name="response" value="Run" class="inline" /> Sentient balloons in a maze? No thanks! I'd cautiously move forward, armed with a pin as my trusty weapon. I'd carefully pop the tricky balloons in my way while avoiding the cheerful ones. It's a tense journey, but deflation is the key to my safe escape.</label>
+            
+            <label><input id="scyth" type="radio" name="response" value="Report" class="inline" />Facing sentient balloons, I'd analyze their behavior. I'd observe patterns and note the traits of the helpful balloons. Using this information, I'd strategically navigate the maze, making alliances with the cooperative balloons and avoiding the tricky ones. It's a methodical approach to balloon diplomacy.</label>
+            
+            <label><input id="lan" type="radio" name="response" value="MoveIn" class="inline" />Balloons with personalities? Ridiculous! I'd probably grab a helium tank and fill the maze with an unbearable high-pitched noise, disrupting their balloon banter. The irritated balloons would scatter, allowing me to saunter through the maze, leaving behind a trail of deflated egos.</label>
+        </div>
+        <button><a style="text-decoration: none; color: white;" href="finalPage.html" onclick="redirectBasedOnVotes()">Submit</a>
+    </section>
+   <!-- <center><section style="position: fixed; width: 100%; background-color: black; color: white; bottom: 0; " id="footer"> 
+        <p style="
+        padding-top: 20px;
+        padding-bottom: 20px;
+    ">Copyright 2023 github/djjunko</p>
+    </section></center> ----> 
+
+
+
+
+    <script>
+        function redirectBasedOnVotes() {
+            const options = ['gaunt', 'kat', 'scyth', 'lan'];
+            let counts = JSON.parse(localStorage.getItem('counts')) || {};
+    
+            options.forEach(option => {
+                const checkbox = document.getElementById(option);
+                if (checkbox.checked) {
+                    counts[option] = (counts[option] || 0) + 1;
+                }
+            });
+    
+            localStorage.setItem('counts', JSON.stringify(counts));
+    
+            const currentPageNumber = parseInt(window.location.pathname.match(/\d+/)[0]);
+            const nextPageNumber = currentPageNumber + 1;
+    
+            if (nextPageNumber <= 10) {
+                window.location.href = `question${nextPageNumber}.html`;
+            } else {
+                window.location.href = 'finalPage.html';
+            }
+        }
+    </script>
+</body>
+</html>
